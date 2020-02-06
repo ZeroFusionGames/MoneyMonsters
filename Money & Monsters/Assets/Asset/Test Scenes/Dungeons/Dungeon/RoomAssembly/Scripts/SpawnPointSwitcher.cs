@@ -41,7 +41,7 @@ public class SpawnPointSwitcher : MonoBehaviour
 
         if(other.gameObject.CompareTag("spawnPoint"))
         {
-            if(other.gameObject.GetComponent<RoomSpawnerConcept>().spawned == true)
+            if(other.gameObject.GetComponent<RoomSpawner>().spawned == true)
             {
 
                 StartCoroutine("flipSpawn");

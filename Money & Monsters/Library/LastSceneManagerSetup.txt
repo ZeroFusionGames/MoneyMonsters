@@ -12,6 +12,10 @@ sceneSetups:
   isActive: 0
   isSubScene: 0
 - path: Assets/Asset/Test Scenes/Dungeons/System 1.0/Dungeon Tests/Concept Build 3/DungeonConceptBuild3.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Asset/Test Scenes/Dungeons/Dungeon/RoomAssembly/Tools/RoomCreationScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

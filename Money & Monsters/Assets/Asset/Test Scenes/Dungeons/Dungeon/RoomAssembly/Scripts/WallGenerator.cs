@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class WallGenerator : MonoBehaviour
 {
-    private RoomTemplatesConcept templates;
+    private RoomTemplates templates;
     public bool hasColided = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        templates = GameObject.FindGameObjectWithTag("roomTemplate").GetComponent<RoomTemplatesConcept>();
+        templates = GameObject.FindGameObjectWithTag("roomTemplate").GetComponent<RoomTemplates>();
         Invoke("GenWall", 2f);
     }
 

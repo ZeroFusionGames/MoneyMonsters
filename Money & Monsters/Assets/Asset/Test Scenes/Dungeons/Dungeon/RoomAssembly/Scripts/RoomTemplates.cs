@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomTemplatesConcept : MonoBehaviour
+public class RoomTemplates : MonoBehaviour
 {
     [Header("Room Components")]
     public GameObject[] bottomRooms;
