@@ -29,7 +29,8 @@ public class WallGenerator : MonoBehaviour
     {
         if(hasColided == false)
         {
-            Instantiate(templates.closedRooms, transform.position, Quaternion.identity);
+            var rand = Random.Range(0, templates.closedRooms.Length);
+            Instantiate(templates.closedRooms[rand], transform.position, Quaternion.identity);
         }
         else if(hasColided == true)
         {

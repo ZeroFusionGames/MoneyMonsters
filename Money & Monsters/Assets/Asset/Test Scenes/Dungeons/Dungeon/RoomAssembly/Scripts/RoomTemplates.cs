@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class RoomTemplates : MonoBehaviour
 {
+    [Header("Room Set")]
+    public RoomSets roomSet;
+
     [Header("Room Components")]
-    public GameObject[] bottomRooms;
     public GameObject[] leftRooms;
     public GameObject[] rightRooms;
     public GameObject[] topRooms;
+    public GameObject[] bottomRooms;
     [Header("Elevation Room Components")]
     public GameObject[] upRooms;
     public GameObject[] downRooms;
@@ -20,7 +23,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] bottomRightRooms;
 
     [Header("Wall Component")]
-    public GameObject closedRooms;
+    public GameObject[] closedRooms;
 
     [Header("Spawned rooms")]
     public List<GameObject> rooms;
@@ -47,5 +50,17 @@ public class RoomTemplates : MonoBehaviour
             waitTime -= Time.deltaTime;
         }
         
+    }
+
+    [ContextMenu("Populate Roomset")]
+    void PopulateTemplate()
+    {
+        bottomRooms = roomSet.bottomRooms;
+        leftRooms = roomSet.leftRooms;
+        rightRooms = roomSet.rightRooms;
+        topRooms = roomSet.topRooms;
+        upRooms = roomSet.upRooms;
+        downRooms = roomSet.downRooms;
+        closedRooms = roomSet.closedRooms;
     }
 }

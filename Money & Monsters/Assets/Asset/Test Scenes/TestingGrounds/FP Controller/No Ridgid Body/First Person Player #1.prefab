@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1972685589627864871}
-  speed: 12
+  speed: 5
   gravity: -30
   terminalVolocity: -100
   groundCheck: {fileID: 3789072400523346650}
@@ -267,7 +267,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 5121
-  jumpHight: 3
+  jumpHight: 1
   inPositiveGravFeild: 0
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &8325807392519191066
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d5631828301ff4db96d4fc720e285f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 200
   playerBody: {fileID: 3789072399535019550}
 --- !u!114 &2412505241562049147
 MonoBehaviour:

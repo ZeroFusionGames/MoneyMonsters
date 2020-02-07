@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4268283375716136477}
   - component: {fileID: 4804454970453891060}
+  - component: {fileID: 7526133668121239126}
   m_Layer: 0
   m_Name: RoomCreator
   m_TagString: Untagged
@@ -44,18 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Guide: Use multiples of 3. Odd multiples work the best. always add .5 to the end
-  RoomSize: 15.5
+  RoomSize: 9.5
   RoomHeight: 3.5
   spawnPoint: {fileID: 1971939539176325824, guid: 933a011ac249a844e91452fba18b4f6d,
     type: 3}
   destoryer: {fileID: 267860108215531184, guid: ab1c4f483fd710b4081ae8568c5daccb,
     type: 3}
-  leftDoor: 1
-  rightDoor: 1
-  topDoor: 1
-  bottomDoor: 1
-  upDoor: 1
-  downDoor: 1
+  leftDoor: 0
+  rightDoor: 0
+  topDoor: 0
+  bottomDoor: 0
+  upDoor: 0
+  downDoor: 0
   wall:
   - {fileID: 5584818451090943211, guid: 73a52adbe25ff8047a9d1f1f38aa9885, type: 3}
   - {fileID: 7673321875305001252, guid: c403835d70ba3164c99d65989a1a36e7, type: 3}
@@ -68,3 +69,24 @@ MonoBehaviour:
   - {fileID: 1035898995855194126, guid: b279878608d387f4bac8b77dbab4d135, type: 3}
   roof:
   - {fileID: 4146469535077336810, guid: 53dc999e36d63b04c9db2ef36a157e87, type: 3}
+--- !u!114 &7526133668121239126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715807517995374453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637739b2c497d734dad4c20c64590fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomSet: {fileID: 0}
+  roomsToSort: []
+  leftRooms: []
+  rightRooms: []
+  topRooms: []
+  bottomRooms: []
+  upRooms: []
+  downRooms: []
+  closedRooms: []

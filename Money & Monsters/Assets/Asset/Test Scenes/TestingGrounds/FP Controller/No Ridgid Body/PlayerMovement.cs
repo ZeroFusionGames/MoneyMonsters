@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 			doubleJumped = true;
 		}
 
-		//stop umping gitter
+		//stop jumping gitter
 
 		velocity.y += gravity * Time.deltaTime;
 

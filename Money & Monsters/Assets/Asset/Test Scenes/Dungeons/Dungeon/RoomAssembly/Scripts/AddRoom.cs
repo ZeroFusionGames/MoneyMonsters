@@ -6,6 +6,13 @@ public class AddRoom : MonoBehaviour
 {
     private RoomTemplates templates;
     [SerializeField] private bool wayPoint = true;
+    [Header("Openings")]
+    public bool leftDoor;
+    public bool rightDoor;
+    public bool topDoor;
+    public bool bottomDoor;
+    public bool upDoor;
+    public bool downDoor;
     // Start is called before the first frame update
     void Start()
     {

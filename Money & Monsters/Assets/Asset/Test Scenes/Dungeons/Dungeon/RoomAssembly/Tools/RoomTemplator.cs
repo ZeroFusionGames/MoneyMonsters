@@ -58,6 +58,15 @@ public class RoomTemplator : MonoBehaviour
 	{
 		//Create the empty game objects and parents them.
 		room = new GameObject("INSERT ROOM NAME");
+		var addRoomScript = room.AddComponent<AddRoom>();
+		#region Add Spawnpoints to room data
+		if (leftDoor) { addRoomScript.leftDoor = true; }
+		if (rightDoor) { addRoomScript.rightDoor = true; }
+		if (topDoor) { addRoomScript.topDoor = true; }
+		if (bottomDoor) { addRoomScript.bottomDoor = true; }
+		if (upDoor) { addRoomScript.upDoor = true; }
+		if (downDoor) { addRoomScript.downDoor = true; }
+		#endregion
 		var spawnPoints = new GameObject("SpawnPoints");
 		spawnPoints.transform.SetParent(room.transform);
 		var toAdd = new GameObject("Walls");
@@ -124,6 +133,15 @@ public class RoomTemplator : MonoBehaviour
 		//Create the empty game objects and parents them.
 		float wallamount = ((RoomSize - 0.5f) / 3);
 		room = new GameObject("INSERT ROOM NAME");
+		var addRoomScript = room.AddComponent<AddRoom>();
+		#region Add Spawnpoints to room data
+		if (leftDoor) { addRoomScript.leftDoor = true; }
+		if (rightDoor) { addRoomScript.rightDoor = true; }
+		if (topDoor) { addRoomScript.topDoor = true; }
+		if (bottomDoor) { addRoomScript.bottomDoor = true; }
+		if (upDoor) { addRoomScript.upDoor = true; }
+		if (downDoor) { addRoomScript.downDoor = true; }
+		#endregion
 
 		#region SpawnPoints
 		var spawnPoints = new GameObject("SpawnPoints");

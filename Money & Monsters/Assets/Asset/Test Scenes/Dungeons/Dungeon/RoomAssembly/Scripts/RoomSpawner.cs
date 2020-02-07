@@ -157,7 +157,8 @@ public class RoomSpawner : MonoBehaviour
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 //spawn wall to block holes]
-                Instantiate(templates.closedRooms, transform.position, Quaternion.identity);
+                rand = Random.Range(0, templates.closedRooms.Length);
+                Instantiate(templates.closedRooms[rand], transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
             spawned = true;
