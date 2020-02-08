@@ -63,10 +63,10 @@ MonoBehaviour:
   floor:
   - {fileID: 1035898995855194126, guid: b279878608d387f4bac8b77dbab4d135, type: 3}
   - {fileID: 1638421225803170951, guid: a9c67fbe74555b847ab2ac0d1d450a56, type: 3}
-  door:
-  - {fileID: 4146469535077336810, guid: 53dc999e36d63b04c9db2ef36a157e87, type: 3}
-  - {fileID: 1638421225803170951, guid: a9c67fbe74555b847ab2ac0d1d450a56, type: 3}
-  - {fileID: 1035898995855194126, guid: b279878608d387f4bac8b77dbab4d135, type: 3}
+  doorWays:
+  - {fileID: 6998271287243585429, guid: 63478f626dba61245bed379323088ae0, type: 3}
+  doorSpawners:
+  - {fileID: 6682410692020574109, guid: c13b4ab992ea6da4aba731644b4a56c2, type: 3}
   roof:
   - {fileID: 4146469535077336810, guid: 53dc999e36d63b04c9db2ef36a157e87, type: 3}
 --- !u!114 &7526133668121239126

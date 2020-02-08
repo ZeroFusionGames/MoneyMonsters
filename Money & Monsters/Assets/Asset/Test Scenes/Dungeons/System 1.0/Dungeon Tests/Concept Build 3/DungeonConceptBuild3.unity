@@ -895,7 +895,7 @@ RectTransform:
   m_AnchoredPosition: {x: -0.17, y: 3.26}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1536115682
+--- !u!114 &1831708521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -919,7 +919,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   multiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -956,12 +956,12 @@ MonoBehaviour:
     max: 10
   atmosphereThickness:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 1.5
     min: 0
     max: 5
   skyTint:
     m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_Value: {r: 0, g: 0.5566038, b: 0.5033827, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1

@@ -27,7 +27,8 @@ public class RoomTemplator : MonoBehaviour
 	[Header("Room Parts")]
 	public GameObject[] wall;
 	public GameObject[] floor;
-	public GameObject[] door;
+	public GameObject[] doorWays;
+	public GameObject[] doorSpawners;
 	public GameObject[] roof;
 
 	private void OnDrawGizmos()
@@ -228,7 +229,8 @@ public class RoomTemplator : MonoBehaviour
 				}
 				else
 				{
-					var currentwall = Instantiate(door[Random.Range(0, door.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity); 
+					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+					Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity,currentwall.transform);
 					lastLocation = currentwall.transform.position.z;
 					currentwall.transform.SetParent(addTo.transform);
 				}
@@ -265,7 +267,8 @@ public class RoomTemplator : MonoBehaviour
 				}
 				else
 				{
-					var currentwall = Instantiate(door[Random.Range(0, door.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+					Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
 					lastLocation = currentwall.transform.position.z;
 					currentwall.transform.SetParent(addTo.transform);
 				}
@@ -303,7 +306,8 @@ public class RoomTemplator : MonoBehaviour
 				}
 				else
 				{
-					var currentwall = Instantiate(door[Random.Range(0, door.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+					Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
 					lastLocation = currentwall.transform.position.z;
 					currentwall.transform.SetParent(addTo.transform);
 				}
@@ -340,7 +344,8 @@ public class RoomTemplator : MonoBehaviour
 				}
 				else
 				{
-					var currentwall = Instantiate(door[Random.Range(0, door.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+					Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
 					lastLocation = currentwall.transform.position.z;
 					currentwall.transform.SetParent(addTo.transform);
 				}

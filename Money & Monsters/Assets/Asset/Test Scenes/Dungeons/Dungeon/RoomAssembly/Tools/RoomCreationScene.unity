@@ -200,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6acea1b33e6860e4c8e5ef2505358a02, type: 3}
---- !u!114 &1550726412
+--- !u!114 &1549741352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1334,6 +1334,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804454970453891060, guid: 878520defbae6c44887a1ca2f3815060,
+        type: 3}
+      propertyPath: door.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804454970453891060, guid: 878520defbae6c44887a1ca2f3815060,
+        type: 3}
+      propertyPath: door.Array.data[0]
+      value: 
+      objectReference: {fileID: 6998271287243585429, guid: 63478f626dba61245bed379323088ae0,
+        type: 3}
+    - target: {fileID: 4804454970453891060, guid: 878520defbae6c44887a1ca2f3815060,
+        type: 3}
+      propertyPath: leftDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804454970453891060, guid: 878520defbae6c44887a1ca2f3815060,
+        type: 3}
+      propertyPath: rightDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804454970453891060, guid: 878520defbae6c44887a1ca2f3815060,
+        type: 3}
+      propertyPath: topDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4804454970453891060, guid: 878520defbae6c44887a1ca2f3815060,
+        type: 3}
+      propertyPath: bottomDoor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 878520defbae6c44887a1ca2f3815060, type: 3}
@@ -4608,7 +4639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: 549b6726cb49948488d0b3439d1ed96c, type: 2}
   m_StaticLightingSkyUniqueID: 2
-  m_SkySettings: {fileID: 1550726412}
+  m_SkySettings: {fileID: 1549741352}
   m_SkySettingsFromProfile: {fileID: 921945763603286999, guid: 549b6726cb49948488d0b3439d1ed96c,
     type: 2}
 --- !u!4 &7999579428114121617
