@@ -10005,7 +10005,6 @@ MonoBehaviour:
   spawnTimer: 0
   rarity: 100
   objectSet: {fileID: 11400000, guid: cdc86f17d79f5d242aade3806e0099db, type: 2}
-  useRandomRotation: 0
 --- !u!1 &2714085104371152266
 GameObject:
   m_ObjectHideFlags: 0
@@ -13729,7 +13728,7 @@ GameObject:
   - component: {fileID: 8431990004538447097}
   m_Layer: 0
   m_Name: pCube1
-  m_TagString: NavMesh
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22376,7 +22375,7 @@ GameObject:
   - component: {fileID: 6059884852303585032}
   m_Layer: 0
   m_Name: pCube1
-  m_TagString: NavMesh
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

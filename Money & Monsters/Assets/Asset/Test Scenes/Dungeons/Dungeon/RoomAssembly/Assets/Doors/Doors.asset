@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Doors
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 3849484558381940163, guid: bb4cc2a838c96b04bae0816cd6bd7409, type: 3}
+  - {fileID: 3891005078042804749, guid: bb4cc2a838c96b04bae0816cd6bd7409, type: 3}
   - {fileID: 7697105436101702314, guid: e642479f036d7264081712656b3a2c36, type: 3}
