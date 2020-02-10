@@ -4,8 +4,8 @@ sceneSetups:
   isActive: 0
   isSubScene: 0
 - path: Assets/Asset/HubWorld/HubWorld.unity
-  isLoaded: 1
-  isActive: 1
+  isLoaded: 0
+  isActive: 0
   isSubScene: 0
 - path: Assets/Asset/Menu/MainMenu.unity
   isLoaded: 0
@@ -13,17 +13,10 @@ sceneSetups:
   isSubScene: 0
 - path: Assets/Asset/Test Scenes/Dungeons/System 1.0/Dungeon Tests/Concept Build
     3/DungeonConceptBuild3.unity
-<<<<<<< HEAD
-  isLoaded: 0
-  isActive: 0
-  isSubScene: 0
-- path: Assets/Asset/Test Scenes/Dungeons/Dungeon/RoomAssembly/Tools/RoomCreationScene.unity
-=======
->>>>>>> parent of 10aa157... 1st Test roomset working
-  isLoaded: 0
-  isActive: 0
-  isSubScene: 0
-- path: Assets/Asset/Test Scenes/Dungeons/Dungeon/RoomAssembly/Tools/RoomCreationScene.unity
   isLoaded: 1
   isActive: 1
+  isSubScene: 0
+- path: Assets/Asset/Test Scenes/Dungeons/Dungeon/RoomAssembly/Tools/RoomCreationScene.unity
+  isLoaded: 0
+  isActive: 0
   isSubScene: 0

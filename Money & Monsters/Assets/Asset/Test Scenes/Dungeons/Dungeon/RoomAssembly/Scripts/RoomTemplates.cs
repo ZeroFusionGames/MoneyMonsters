@@ -63,4 +63,23 @@ public class RoomTemplates : MonoBehaviour
         downRooms = roomSet.downRooms;
         closedRooms = roomSet.closedRooms;
     }
+
+    [ContextMenu("Reset Roomset")]
+    void ResetTemplate()
+    {
+        bottomRooms = new GameObject[0];
+        leftRooms = new GameObject[0];
+        rightRooms = new GameObject[0];
+        topRooms = new GameObject[0];
+        upRooms = new GameObject[0];
+        downRooms = new GameObject[0];
+        closedRooms = new GameObject[0];
+    }
+
+    [ContextMenu("Reset and Populate")]
+    void ResetAndPopulate()
+    {
+        ResetTemplate();
+        PopulateTemplate();
+    }
 }

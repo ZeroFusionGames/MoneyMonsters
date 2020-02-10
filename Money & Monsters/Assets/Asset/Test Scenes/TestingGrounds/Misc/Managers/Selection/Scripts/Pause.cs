@@ -24,7 +24,7 @@ public class Pause : MonoBehaviour
 		}
 		else if (InputManager.instance.KeyDown("Pause") && paused == false || InputManager.instance.KeyDown("Cancel") && paused == false)
 		{
-			timeScaleOriginal = Time.timeScale;
+			timeScaleOriginal = 1;
 			Time.timeScale = 0f;
 			playerHUD.SetActive(false);
 			pauseMenu.SetActive(true);

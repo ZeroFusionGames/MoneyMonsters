@@ -7,6 +7,7 @@ public class ObjectSetSpawner : MonoBehaviour
     public float spawnTimer = 5;
     [Range(0,100)]public int rarity = 50;
     public ObjectSet objectSet;
+    public bool useRandomRotation = false;
 
     void Start()
     {
@@ -22,9 +23,13 @@ public class ObjectSetSpawner : MonoBehaviour
     {
         var objectnumber = Random.Range(0, objectSet.objects.Length);
         var rarenumber = Random.Range(0, 100);
-        if (rarenumber <= rarity)
+        if (rarenumber <= rarity && !useRandomRotation)
         {
             Instantiate(objectSet.objects[objectnumber], this.transform);
+        }
+        else if(rarenumber <=rarity && useRandomRotation)
+        {
+            Instantiate(objectSet.objects[objectnumber], this.transform.position, Quaternion.Euler(0, Random.Range(0, 360), 0), this.transform);
         }
         //Destroy(this.gameObject);
     }
