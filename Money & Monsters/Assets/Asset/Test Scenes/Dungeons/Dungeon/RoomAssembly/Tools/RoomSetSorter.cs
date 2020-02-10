@@ -37,13 +37,6 @@ public class RoomSetSorter : MonoBehaviour
     [ContextMenu("Apply to RoomSet")]
     void ApplyToRoomSet()
     {
-        roomSet.leftRooms = new GameObject[0];
-        roomSet.rightRooms = new GameObject[0];
-        roomSet.topRooms = new GameObject[0];
-        roomSet.bottomRooms = new GameObject[0];
-        roomSet.upRooms = new GameObject[0];
-        roomSet.downRooms = new GameObject[0];
-
         roomSet.leftRooms = leftRooms.ToArray();
         roomSet.rightRooms = rightRooms.ToArray();
         roomSet.topRooms = topRooms.ToArray();
@@ -58,16 +51,5 @@ public class RoomSetSorter : MonoBehaviour
     {
         sortRooms();
         ApplyToRoomSet();
-    }
-
-    [ContextMenu("Reset Lists")]
-    private void ResetLists()
-    {
-        leftRooms.Clear();
-        rightRooms.Clear();
-        topRooms.Clear();
-        bottomRooms.Clear();
-        upRooms.Clear();
-        downRooms.Clear();
     }
 }
