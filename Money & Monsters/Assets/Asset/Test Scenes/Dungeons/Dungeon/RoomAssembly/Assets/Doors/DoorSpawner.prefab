@@ -46,3 +46,4 @@ MonoBehaviour:
   spawnTimer: 0
   rarity: 100
   objectSet: {fileID: 11400000, guid: cdc86f17d79f5d242aade3806e0099db, type: 2}
+  useRandomRotation: 0

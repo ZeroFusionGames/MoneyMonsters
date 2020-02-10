@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
 
 public class RoomTemplator : MonoBehaviour
 {
-	[SerializeField] private float[] rotations = new float[4];
 
 	[TextArea]
 	public string Guide = "Use multiples of 3. Odd multiples work the best. Always add .5 to the end";
@@ -33,9 +31,6 @@ public class RoomTemplator : MonoBehaviour
 	public GameObject[] doorSpawners;
 	public GameObject[] roof;
 
-	[Header("Light Settings")]
-	public float lightIntensity = 30;
-	public Color lightColour;
 	private void OnDrawGizmos()
 	{
 		Gizmos.DrawWireCube(new Vector3(0, RoomHeight / 2, 0), new Vector3(RoomSize, RoomHeight, RoomSize));
@@ -140,16 +135,6 @@ public class RoomTemplator : MonoBehaviour
 		float wallamount = ((RoomSize - 0.5f) / 3);
 		room = new GameObject("INSERT ROOM NAME");
 		var addRoomScript = room.AddComponent<AddRoom>();
-		#region Ambient Lighting
-		var ambientLight = new GameObject("Ambient light");
-		ambientLight.transform.SetParent(room.transform);
-		var light = ambientLight.AddHDLight(HDLightTypeAndShape.Point);
-		light.transform.position = new Vector3(0, 1.75f, 0);
-		light.intensity = lightIntensity;
-		light.color = lightColour;
-		light.range = RoomSize;
-
-		#endregion
 		#region Add Spawnpoints to room data
 		if (leftDoor) { addRoomScript.leftDoor = true; }
 		if (rightDoor) { addRoomScript.rightDoor = true; }
@@ -283,7 +268,7 @@ public class RoomTemplator : MonoBehaviour
 				else
 				{
 					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					//Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
+					Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
 					lastLocation = currentwall.transform.position.z;
 					currentwall.transform.SetParent(addTo.transform);
 				}
@@ -360,7 +345,7 @@ public class RoomTemplator : MonoBehaviour
 				else
 				{
 					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					//Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
+					Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
 					lastLocation = currentwall.transform.position.z;
 					currentwall.transform.SetParent(addTo.transform);
 				}
@@ -381,7 +366,7 @@ public class RoomTemplator : MonoBehaviour
 			for (int q = 0; q < wallamount; q++) //this creates the strip
 			{
 
-				var currentFloor = Instantiate(floor[Random.Range(0,floor.Length)], new Vector3(0,0,lastLocation+3), Quaternion.Euler(0, rotations[Random.Range(0, rotations.Length)], 0)); // this creates each floor in the strip
+				var currentFloor = Instantiate(floor[Random.Range(0,floor.Length)], new Vector3(0,0,lastLocation+3), Quaternion.identity); // this creates each floor in the strip
 				lastLocation = currentFloor.transform.position.z; // this sets the last position to allow next floor to spawn next to it
 				currentFloor.transform.SetParent(currentFloorStrip.transform); // parents the floor to it's strip
 			}
@@ -390,6 +375,7 @@ public class RoomTemplator : MonoBehaviour
 			currentFloorStrip.transform.SetParent(floors.transform); // parents each strip to the floor container
 		}
 		#endregion
+
 		#region Roof
 		var roofs = new GameObject("Ceilings");
 		roofs.transform.SetParent(room.transform);
@@ -402,7 +388,7 @@ public class RoomTemplator : MonoBehaviour
 			for (int q = 0; q < wallamount; q++)
 			{
 
-				var currentFloor = Instantiate(roof[Random.Range(0, roof.Length )], new Vector3(0, 0, lastLocation + 3), Quaternion.Euler(0,rotations[Random.Range(0,rotations.Length)],0));
+				var currentFloor = Instantiate(roof[Random.Range(0, roof.Length )], new Vector3(0, 0, lastLocation + 3), Quaternion.identity);
 				lastLocation = currentFloor.transform.position.z;
 				currentFloor.transform.SetParent(currentRoofStrip.transform);
 			}

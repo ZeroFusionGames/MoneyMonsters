@@ -56,7 +56,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -199,7 +198,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -343,7 +341,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -452,7 +449,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -579,7 +575,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -659,13 +654,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536112491778462068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab45415a3c2eaa545bef1dd7efce0210, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ba5ea0818b105f4a91e1b2c7304fadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opening: 0
+  openingDirection: 2
   spawned: 0
   spawnPoint: {fileID: 0}
-  waitTime: 5
+  waitTime: 4
 --- !u!54 &1536112491778462026
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -783,7 +778,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -893,7 +887,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1002,7 +995,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1096,7 +1088,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1238,7 +1229,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1343,12 +1333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoint: 1
-  leftDoor: 0
-  rightDoor: 0
-  topDoor: 0
-  bottomDoor: 0
-  upDoor: 0
-  downDoor: 0
 --- !u!192 &5478074300162225114
 OcclusionArea:
   m_ObjectHideFlags: 0
@@ -1416,7 +1400,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1512,13 +1495,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536112492925890062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab45415a3c2eaa545bef1dd7efce0210, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ba5ea0818b105f4a91e1b2c7304fadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opening: 0
+  openingDirection: 3
   spawned: 0
   spawnPoint: {fileID: 0}
-  waitTime: 5
+  waitTime: 4
 --- !u!54 &1536112492925890051
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1604,7 +1587,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1665,6 +1647,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1536112492843411383}
     m_Modifications:
+    - target: {fileID: 5712366229084124814, guid: d253cf3d8f5ed44438149e1db8d874ae,
+        type: 3}
+      propertyPath: m_Name
+      value: ObjectSetSpawner(V1 Enemy)
+      objectReference: {fileID: 0}
     - target: {fileID: 5712366229084124812, guid: d253cf3d8f5ed44438149e1db8d874ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1725,11 +1712,6 @@ PrefabInstance:
       propertyPath: rarity
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 5712366229084124814, guid: d253cf3d8f5ed44438149e1db8d874ae,
-        type: 3}
-      propertyPath: m_Name
-      value: ObjectSetSpawner(V1 Enemy)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d253cf3d8f5ed44438149e1db8d874ae, type: 3}
 --- !u!4 &4809428583725051697 stripped
@@ -1745,6 +1727,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1536112492843411383}
     m_Modifications:
+    - target: {fileID: 7414826943768656672, guid: 9995de54279cbe142b32a12ad34a6613,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Destroyer '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414826943768656672, guid: 9995de54279cbe142b32a12ad34a6613,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3846005038888593950, guid: 9995de54279cbe142b32a12ad34a6613,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1799,16 +1791,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414826943768656672, guid: 9995de54279cbe142b32a12ad34a6613,
-        type: 3}
-      propertyPath: m_Name
-      value: 'Destroyer '
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414826943768656672, guid: 9995de54279cbe142b32a12ad34a6613,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9995de54279cbe142b32a12ad34a6613, type: 3}
