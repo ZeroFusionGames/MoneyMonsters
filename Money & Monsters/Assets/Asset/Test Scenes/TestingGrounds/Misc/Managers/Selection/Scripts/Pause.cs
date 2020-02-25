@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-	private float timeScaleOriginal;
+	private float timeScaleOriginal = 1;
 	private bool paused;
 	[SerializeField]
 	private GameObject playerHUD;
 	[SerializeField]
 	private GameObject pauseMenu;
+
+	private void Awake()
+	{
+		Time.timeScale = 1;
+	}
 
 	void Update()
     {

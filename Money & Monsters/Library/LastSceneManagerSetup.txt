@@ -1,11 +1,11 @@
 sceneSetups:
 - path: Assets/Asset/Test Scenes/TestingGrounds/TestingGrounds.unity
-  isLoaded: 0
-  isActive: 0
-  isSubScene: 0
-- path: Assets/Asset/HubWorld/HubWorld.unity
   isLoaded: 1
   isActive: 1
+  isSubScene: 0
+- path: Assets/Asset/HubWorld/HubWorld.unity
+  isLoaded: 0
+  isActive: 0
   isSubScene: 0
 - path: Assets/Asset/Menu/MainMenu.unity
   isLoaded: 0
