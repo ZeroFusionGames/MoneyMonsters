@@ -17,14 +17,15 @@ public class Interactable : MonoBehaviour
 
 
 	[SerializeField] private float playerDistance;
-	[SerializeField] private GameObject selectionManager;
+	 public GameObject selectionManager;
 	[SerializeField] private string selectionManagerTag = "Main Manager";
+	
+
 
 	protected virtual void Start()
 	{
 		selectionManager = GameObject.FindGameObjectWithTag(selectionManagerTag);
 		player = GameObject.FindGameObjectWithTag("Player");
-		
 
 	}
 

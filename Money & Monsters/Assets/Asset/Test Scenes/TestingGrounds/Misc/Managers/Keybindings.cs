@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Keybindings", menuName = "Keybindings")]
 public class Keybindings : ScriptableObject
 {
-	public KeyCode Jump, Interact, Pickup, Throw, Attack, Inventory, Pause, Cancel;
+	public KeyCode Jump, Interact, Crouch, Pickup, Throw, Attack, Inventory, Pause, Cancel;
 
 	public KeyCode CheckKey(string key)
 	{
@@ -16,6 +16,9 @@ public class Keybindings : ScriptableObject
 
 			case "Interact":
 				return Interact;
+
+			case "Crouch":
+				return Crouch;
 
 			case "Pickup":
 				return Pickup;

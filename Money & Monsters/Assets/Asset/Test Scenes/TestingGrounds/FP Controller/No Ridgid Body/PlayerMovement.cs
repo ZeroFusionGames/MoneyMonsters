@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHight = 3f;
 	private bool doubleJumped;
 	public bool inPositiveGravFeild;
+	private bool crouched;
 
 	public Vector3 velocity;
     bool isGrounded;
@@ -49,20 +50,29 @@ public class PlayerMovement : MonoBehaviour
 		if (InputManager.instance.KeyDown("Jump") && isGrounded == true)
         {
 			velocity.y = Mathf.Sqrt(jumpHight * -2f * gravity);
-			controller.slopeLimit = 90f;
-        }
+			controller.slopeLimit = 90f; //stop jumping gitter
+		}
 		
 		//double jump
 		if (InputManager.instance.KeyDown("Jump") && isGrounded == false && doubleJumped == false && inPositiveGravFeild == false)
 		{
 			velocity.y = Mathf.Sqrt(jumpHight * -2f * gravity);
-			controller.slopeLimit = 90f;
+			controller.slopeLimit = 90f; //stop jumping gitter
 			doubleJumped = true;
 		}
 
-		//stop jumping gitter
+		if (!crouched && InputManager.instance.KeyDown("Crouch"))
+		{
+			crouched = true;
+			this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x, this.gameObject.transform.localScale.y / 2, this.gameObject.transform.localScale.z);
+		}
+		else if(crouched && InputManager.instance.KeyDown("Crouch"))
+		{
+			this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x, this.gameObject.transform.localScale.y * 2, this.gameObject.transform.localScale.z);
+			crouched = false;
+		}
 
-		velocity.y += gravity * Time.deltaTime;
+			velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
     }

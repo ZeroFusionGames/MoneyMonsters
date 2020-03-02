@@ -15,13 +15,15 @@ public class Player : MonoBehaviour
 	public float throwStrength; // players throw strength
 	#endregion
 	// Start is called before the first frame update
-	void Awake()
-    {
+
+	private void Start()
+	{
 		selectionManager = GameObject.FindGameObjectWithTag(selectionManagerTag).GetComponent<SelectionManager>();
+		selectionManager.gameObject.GetComponent<HUDManager>().StartCoroutine("fadeOutPlayerHUD");
 	}
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
         if(InputManager.instance.KeyDown("Pickup"))
 		{

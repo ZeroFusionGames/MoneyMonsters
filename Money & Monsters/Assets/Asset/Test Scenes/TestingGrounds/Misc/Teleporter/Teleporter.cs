@@ -8,7 +8,14 @@ public class Teleporter : Interactable
 	public string Scenename;
 	public Animator animator;
 	public bool hasAnimator = true;
+	[SerializeField]private HUDManager hudManager;
 
+
+	private void Start()
+	{
+		base.Start();
+		hudManager = GameObject.FindGameObjectWithTag("Main Manager").GetComponent<HUDManager>();
+	}
 	public override void Interact()
 	{
 		base.Interact();
@@ -27,5 +34,10 @@ public class Teleporter : Interactable
 	void Teleport()
 	{
 		SceneManager.LoadScene(Scenename);
+	}
+
+	void fadeout()
+	{
+		hudManager.StartCoroutine("fadeInPlayerHUD");
 	}
 }
