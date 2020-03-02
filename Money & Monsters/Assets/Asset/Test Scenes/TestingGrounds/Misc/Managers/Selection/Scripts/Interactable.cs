@@ -6,7 +6,7 @@ public class Interactable : MonoBehaviour
 {
 	[Header("Base interactable settings")]
 	public bool selected;
-	public bool interated;
+	public bool interacted;
 	public bool interactable = true;
 	public bool unSelectable = false;
 	public float radius = 3;
@@ -36,11 +36,11 @@ public class Interactable : MonoBehaviour
 		if(selected == true && interactable == true && InputManager.instance.KeyDown("Interact"))
 		{
 			
-			if(!interated)
+			if(!interacted)
 			{
 				StartCoroutine("Interact");
 			}
-			interated = true;
+			interacted = true;
 		}
 
 		if(selectionManager.GetComponent<SelectionManager>().focus == this.gameObject && playerDistance < radius)
@@ -51,7 +51,7 @@ public class Interactable : MonoBehaviour
 		{
 			if(!oneUse)
 			{
-				interated = false;
+				interacted = false;
 			}
 			selected = false;
 		}

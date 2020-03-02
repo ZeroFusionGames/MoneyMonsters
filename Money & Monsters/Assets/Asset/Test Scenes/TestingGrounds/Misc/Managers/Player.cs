@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 	public float throwStrength; // players throw strength
 	#endregion
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
     {
 		selectionManager = GameObject.FindGameObjectWithTag(selectionManagerTag).GetComponent<SelectionManager>();
 	}
