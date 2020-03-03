@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
+	public CharacterController controller;
 
 
-    public float speed = 12f;
-    public float gravity = -9.8f;
+    [SerializeField] private float speed = 12f;
+	public float crouchSpeed = 12f;
+	public float walkSpeed = 12f;
+	public float runSpeed = 12f;
+	public float gravity = -9.8f;
 	public float terminalVolocity = -100f;
 
     public Transform groundCheck;
@@ -17,7 +20,12 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHight = 3f;
 	private bool doubleJumped;
 	public bool inPositiveGravFeild;
+	
+	//Crouch settings
 	private bool crouched;
+	[SerializeField] private float crouchPercentage = 2.5f;
+	[SerializeField] private GameObject playerCamera;
+	[SerializeField] private GameObject playerBody;
 
 	public Vector3 velocity;
     bool isGrounded;
@@ -60,19 +68,26 @@ public class PlayerMovement : MonoBehaviour
 			controller.slopeLimit = 90f; //stop jumping gitter
 			doubleJumped = true;
 		}
-
-		if (!crouched && InputManager.instance.KeyDown("Crouch"))
+		#region Crouch
+		if (!crouched && InputManager.instance.KeyDown("Crouch")) //crouch
 		{
 			crouched = true;
-			this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x, this.gameObject.transform.localScale.y / 2, this.gameObject.transform.localScale.z);
+			playerBody.transform.localScale = new Vector3(playerBody.transform.localScale.x, playerBody.transform.localScale.y / crouchPercentage, playerBody.transform.localScale.z);
+			playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, playerCamera.transform.localPosition.y / crouchPercentage, playerCamera.transform.localPosition.z);
+			controller.height = controller.height / crouchPercentage;
+			speed = crouchSpeed;
 		}
-		else if(crouched && InputManager.instance.KeyDown("Crouch"))
+		else if(crouched && InputManager.instance.KeyDown("Crouch")) //stand up
 		{
-			this.gameObject.transform.localScale = new Vector3(this.gameObject.transform.localScale.x, this.gameObject.transform.localScale.y * 2, this.gameObject.transform.localScale.z);
+			velocity.y = Mathf.Sqrt(1 * -2f * gravity);
+			playerBody.transform.localScale = new Vector3(playerBody.transform.localScale.x, playerBody.transform.localScale.y * crouchPercentage, playerBody.transform.localScale.z);
+			playerCamera.transform.localPosition = new Vector3(playerCamera.transform.localPosition.x, playerCamera.transform.localPosition.y * crouchPercentage, playerCamera.transform.localPosition.z);
+			controller.height = controller.height * crouchPercentage;
+			speed = walkSpeed;
 			crouched = false;
 		}
-
-			velocity.y += gravity * Time.deltaTime;
+		#endregion
+		velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
     }

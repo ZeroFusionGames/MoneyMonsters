@@ -260,6 +260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1972685589627864871}
   speed: 5
+  crouchSpeed: 2
+  walkSpeed: 4
+  runSpeed: 6
   gravity: -30
   terminalVolocity: -100
   groundCheck: {fileID: 3789072400523346650}
@@ -269,6 +272,9 @@ MonoBehaviour:
     m_Bits: 5121
   jumpHight: 1
   inPositiveGravFeild: 0
+  crouchPercentage: 2.5
+  playerCamera: {fileID: 3789072399850540434}
+  playerBody: {fileID: 3789072400112342442}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &8325807392519191066
 MonoBehaviour:
@@ -399,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d5631828301ff4db96d4fc720e285f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 200
+  mouseSensitivity: 300
   playerBody: {fileID: 3789072399535019550}
 --- !u!114 &2412505241562049147
 MonoBehaviour:

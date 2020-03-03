@@ -7,6 +7,8 @@ public class RoomTemplator : MonoBehaviour
 {
 	[SerializeField] private float[] rotations = new float[4];
 
+	public int AmoutOfRoomsToCreate;
+
 	[TextArea]
 	public string Guide = "Use multiples of 3. Odd multiples work the best. Always add .5 to the end";
 	[Header ("Room Size Config")]
@@ -414,5 +416,76 @@ public class RoomTemplator : MonoBehaviour
 
 		var objects = new GameObject("Objects");
 		objects.transform.SetParent(room.transform);
+	}
+
+	[ContextMenu("Create Multiple Room")]
+	private void CreateManyRooms()
+	{
+		for (int i = 0; i < AmoutOfRoomsToCreate; i++)
+		{
+			CreateRoomFully();
+			room.name = i.ToString();
+		}
+	}
+
+	[ContextMenu("Create Full RoomSet")]
+	private void CreateFullRoomset()
+	{
+		ResetDoors();
+		leftDoor = true;
+		rightDoor = true;
+
+		for (int i = 0; i < AmoutOfRoomsToCreate; i++)
+		{
+			CreateRoomFully();
+			room.name = i.ToString() + "LR";
+		}
+		ResetDoors();
+		topDoor = true;
+		bottomDoor = true;
+
+		for (int i = 0; i < AmoutOfRoomsToCreate; i++)
+		{
+			CreateRoomFully();
+			room.name = i.ToString() + "TB";
+		}
+		ResetDoors();
+		leftDoor = true;
+		bottomDoor = true;
+
+
+		for (int i = 0; i < AmoutOfRoomsToCreate; i++)
+		{
+			CreateRoomFully();
+			room.name = i.ToString() + "BL";
+		}
+		ResetDoors();
+		rightDoor = true;
+		bottomDoor = true;
+
+		for (int i = 0; i < AmoutOfRoomsToCreate; i++)
+		{
+			CreateRoomFully();
+			room.name = i.ToString() + "BR";
+		}
+		ResetDoors();
+		leftDoor = true;
+		topDoor = true;
+
+		for (int i = 0; i < AmoutOfRoomsToCreate; i++)
+		{
+			CreateRoomFully();
+			room.name = i.ToString() + "TL";
+		}
+		ResetDoors();
+		rightDoor = true;
+		topDoor = true;
+
+		for (int i = 0; i < AmoutOfRoomsToCreate; i++)
+		{
+			CreateRoomFully();
+			room.name = i.ToString() + "TR";
+		}
+		ResetDoors();
 	}
 }

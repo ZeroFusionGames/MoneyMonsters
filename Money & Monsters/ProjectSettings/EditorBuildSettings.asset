@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Asset/Test Scenes/TestingGrounds/TestingGrounds.unity
     guid: ccb3fae47bc0bf1469e042892cfc7dc7
   - enabled: 1
-    path: Assets/Asset/HubWorld/HubWorld.unity
-    guid: 564c6778fcc57fb4288e3abffadbb68b
-  - enabled: 1
     path: Assets/Asset/Test Scenes/Dungeons/System 1.0/Dungeon Tests/Concept Build
       3/DungeonConceptBuild3.unity
     guid: 5fe56d837d7469748a14d2f3c481b290

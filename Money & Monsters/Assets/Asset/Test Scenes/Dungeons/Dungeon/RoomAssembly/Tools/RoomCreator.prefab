@@ -49,6 +49,7 @@ MonoBehaviour:
   - 90
   - 180
   - 270
+  AmoutOfRoomsToCreate: 5
   Guide: Use multiples of 3. Odd multiples work the best. always add .5 to the end
   RoomSize: 9.5
   RoomHeight: 3.5
@@ -56,10 +57,10 @@ MonoBehaviour:
     type: 3}
   destoryer: {fileID: 267860108215531184, guid: ab1c4f483fd710b4081ae8568c5daccb,
     type: 3}
-  leftDoor: 1
-  rightDoor: 1
-  topDoor: 1
-  bottomDoor: 1
+  leftDoor: 0
+  rightDoor: 0
+  topDoor: 0
+  bottomDoor: 0
   upDoor: 0
   downDoor: 0
   wall:
@@ -72,13 +73,14 @@ MonoBehaviour:
   - {fileID: 1638421225803170951, guid: a9c67fbe74555b847ab2ac0d1d450a56, type: 3}
   doorWays:
   - {fileID: 2842062851625005427, guid: 63478f626dba61245bed379323088ae0, type: 3}
+  - {fileID: 4105971168546082046, guid: 9174a056d7fce404eb0cc152b9545325, type: 3}
   doorSpawners:
   - {fileID: 6682410692020574109, guid: c13b4ab992ea6da4aba731644b4a56c2, type: 3}
   roof:
   - {fileID: 4146469535077336810, guid: 53dc999e36d63b04c9db2ef36a157e87, type: 3}
   - {fileID: 8225672281465495940, guid: 294246bbb5fae9645be93d045bc80d78, type: 3}
   lightIntensity: 30
-  lightColour: {r: 0.8235294, g: 0.9372549, b: 0.94509804, a: 0}
+  lightColour: {r: 0.7322891, g: 0.82387257, b: 0.8301887, a: 0}
 --- !u!114 &7526133668121239126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637739b2c497d734dad4c20c64590fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomSet: {fileID: 0}
+  roomSet: {fileID: 11400000, guid: 3b48a464822c64e4e9c14fd7604b26d1, type: 2}
   roomsToSort: []
   leftRooms: []
   rightRooms: []
@@ -99,4 +101,9 @@ MonoBehaviour:
   bottomRooms: []
   upRooms: []
   downRooms: []
-  closedRooms: []
+  closedRooms:
+  - {fileID: 6156688347356740728, guid: 473d8ed4e4f7fc34f9c810094ca75f5b, type: 3}
+  - {fileID: 6156688347356740728, guid: 473d8ed4e4f7fc34f9c810094ca75f5b, type: 3}
+  - {fileID: 6156688347356740728, guid: 473d8ed4e4f7fc34f9c810094ca75f5b, type: 3}
+  - {fileID: 6156688347356740728, guid: 473d8ed4e4f7fc34f9c810094ca75f5b, type: 3}
+  - {fileID: 6156688347356740728, guid: 473d8ed4e4f7fc34f9c810094ca75f5b, type: 3}
