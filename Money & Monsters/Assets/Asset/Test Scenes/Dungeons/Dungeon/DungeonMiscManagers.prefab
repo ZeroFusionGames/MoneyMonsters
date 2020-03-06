@@ -75,7 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709f0a5ba32c5f641bf84299a904213f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomSet: {fileID: 11400000, guid: 3b48a464822c64e4e9c14fd7604b26d1, type: 2}
+  roomSet:
+  - {fileID: 11400000, guid: 3b48a464822c64e4e9c14fd7604b26d1, type: 2}
   leftRooms:
   - {fileID: 7248276773391043261, guid: 42e85a36b37683841927021096f6cf99, type: 3}
   - {fileID: 3965049794930892505, guid: 56541ddceac197e4293c319fee195028, type: 3}

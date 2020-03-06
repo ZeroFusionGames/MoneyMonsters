@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class Player : MonoBehaviour
 {
@@ -25,17 +26,18 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if(InputManager.instance.KeyDown("Pickup"))
+		if (InputManager.instance.KeyDown("Interact"))
 		{
 			if (handsFull == false)
 			{
 				StartCoroutine("pickupToHand");
 			}
-			else if(handsFull == true)
-			{
-				StartCoroutine("DropItemInHand");
-			}
 		}
+		if (handsFull == true && InputManager.instance.KeyDown("Drop"))
+		{
+			StartCoroutine("DropItemInHand");
+		}
+		
 		if (InputManager.instance.KeyDown("Throw") && handsFull == true)
 		{
 			StartCoroutine("ThrowItemInHand");
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
 			GameObject target;
 			target = selectionManager.focus;
 			Transform interactionTransform = target.GetComponent<Interactable>().interactionTransform;
+
 			if (selectionManager.selectionConfirmed == true && target.GetComponent<PickUpable>())
 			{
 				Vector3 targetOffset;

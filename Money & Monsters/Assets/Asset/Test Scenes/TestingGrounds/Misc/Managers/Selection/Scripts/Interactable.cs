@@ -41,7 +41,10 @@ public class Interactable : MonoBehaviour
 			{
 				StartCoroutine("Interact");
 			}
-			interacted = true;
+			if (oneUse)
+			{
+				interacted = true;
+			}
 		}
 
 		if(selectionManager.GetComponent<SelectionManager>().focus == this.gameObject && playerDistance < radius)

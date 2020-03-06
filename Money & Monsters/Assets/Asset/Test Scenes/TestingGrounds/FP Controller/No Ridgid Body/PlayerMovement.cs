@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	public CharacterController controller;
-
+	private Camera cam;
+	private float camFOV;
 
     [SerializeField] private float speed = 12f;
 	public float crouchSpeed = 12f;
@@ -30,7 +31,13 @@ public class PlayerMovement : MonoBehaviour
 	public Vector3 velocity;
     bool isGrounded;
 
-    void Update()
+	private void Start()
+	{
+		cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+		camFOV = cam.fieldOfView;
+	}
+
+	void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -87,7 +94,22 @@ public class PlayerMovement : MonoBehaviour
 			crouched = false;
 		}
 		#endregion
-		velocity.y += gravity * Time.deltaTime;
+
+
+		#region Sprint
+		if (!crouched && InputManager.instance.GetKey("Sprint")) //crouch
+		{
+			speed = runSpeed;
+			cam.fieldOfView = camFOV + 10f;
+		}
+		else
+		{
+			speed = walkSpeed;
+			cam.fieldOfView = camFOV;
+		}
+			#endregion
+
+			velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
     }

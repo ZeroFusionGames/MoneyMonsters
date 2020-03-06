@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 151c0da3e55d8444a9f739a4db6ab6fe, type: 3}
-  m_Name: Doors
+  m_Name: CrouchDoorSet
   m_EditorClassIdentifier: 
   objects:
   - {fileID: 7374185648515352797, guid: bb4cc2a838c96b04bae0816cd6bd7409, type: 3}

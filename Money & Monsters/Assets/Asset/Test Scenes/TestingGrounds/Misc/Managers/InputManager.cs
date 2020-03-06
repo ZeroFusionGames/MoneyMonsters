@@ -32,4 +32,28 @@ public class InputManager : MonoBehaviour
 			return false;
 		}
 	}
+
+	public bool KeyUp(string key)
+	{
+		if (Input.GetKeyUp(keybindings.CheckKey(key)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public bool GetKey(string key)
+	{
+		if (Input.GetKey(keybindings.CheckKey(key)))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

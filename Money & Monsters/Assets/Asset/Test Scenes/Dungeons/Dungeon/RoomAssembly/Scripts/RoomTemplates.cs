@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomTemplates : MonoBehaviour
 {
     [Header("Room Set")]
-    public RoomSets roomSet;
+    public RoomSets[] roomSet;
 
     [Header("Room Components")]
     public GameObject[] leftRooms;
@@ -30,7 +30,14 @@ public class RoomTemplates : MonoBehaviour
 
     public float waitTime;
     private bool spawnedBoss;
+    private int roomSetNumber = 0;
     public GameObject boss;
+
+
+    private void Awake()
+    {
+        ResetAndPopulate();
+    }
 
     void Update()
     {
@@ -55,13 +62,13 @@ public class RoomTemplates : MonoBehaviour
     [ContextMenu("Populate Roomset")]
     void PopulateTemplate()
     {
-        bottomRooms = roomSet.bottomRooms;
-        leftRooms = roomSet.leftRooms;
-        rightRooms = roomSet.rightRooms;
-        topRooms = roomSet.topRooms;
-        upRooms = roomSet.upRooms;
-        downRooms = roomSet.downRooms;
-        closedRooms = roomSet.closedRooms;
+        bottomRooms = roomSet[roomSetNumber].bottomRooms;
+        leftRooms = roomSet[roomSetNumber].leftRooms;
+        rightRooms = roomSet[roomSetNumber].rightRooms;
+        topRooms = roomSet[roomSetNumber].topRooms;
+        upRooms = roomSet[roomSetNumber].upRooms;
+        downRooms = roomSet[roomSetNumber].downRooms;
+        closedRooms = roomSet[roomSetNumber].closedRooms;
     }
 
     [ContextMenu("Reset Roomset")]

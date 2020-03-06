@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4922910899589674637}
   - component: {fileID: 6916841886807781137}
   m_Layer: 0
-  m_Name: DoorSpawner
+  m_Name: CrouchDoorSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,3 +46,4 @@ MonoBehaviour:
   spawnTimer: 0
   rarity: 100
   objectSet: {fileID: 11400000, guid: cdc86f17d79f5d242aade3806e0099db, type: 2}
+  useRandomRotation: 0

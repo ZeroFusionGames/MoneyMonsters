@@ -15,7 +15,8 @@ MonoBehaviour:
   Jump: 32
   Interact: 101
   Crouch: 306
-  Pickup: 102
+  Sprint: 304
+  Drop: 103
   Throw: 324
   Attack: 323
   Inventory: 105

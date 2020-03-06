@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 0
-  interated: 0
+  interacted: 0
   interactable: 1
   unSelectable: 0
   radius: 3
@@ -294,10 +294,11 @@ AudioSource:
   m_GameObject: {fileID: 4458044454999305327}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 887376cce9fb61949bae329b4ae12642,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 1a32499ac155ae1428d0270460c5e86c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -425,7 +426,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7374185648515352797}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f12396844108f2b4095c9627b6701e77, type: 2}
   m_CullingMode: 0

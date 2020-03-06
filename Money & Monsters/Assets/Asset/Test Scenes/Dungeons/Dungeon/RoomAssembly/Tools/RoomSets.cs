@@ -6,6 +6,7 @@ using UnityEngine;
 public class RoomSets : ScriptableObject
 {
     [Header("Room Components")]
+    public GameObject[] start;
     public GameObject[] leftRooms;
     public GameObject[] rightRooms;
     public GameObject[] topRooms;

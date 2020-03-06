@@ -31,7 +31,8 @@ public class RoomTemplator : MonoBehaviour
 	[Header("Room Parts")]
 	public GameObject[] wall;
 	public GameObject[] floor;
-	public GameObject[] doorWays;
+	public GameObject[] standardDoorWays;
+	public GameObject[] crouchDoorWays;
 	public GameObject[] doorSpawners;
 	public GameObject[] roof;
 
@@ -143,13 +144,14 @@ public class RoomTemplator : MonoBehaviour
 		room = new GameObject("INSERT ROOM NAME");
 		var addRoomScript = room.AddComponent<AddRoom>();
 		#region Ambient Lighting
-		var ambientLight = new GameObject("Ambient light");
-		ambientLight.transform.SetParent(room.transform);
-		var light = ambientLight.AddHDLight(HDLightTypeAndShape.Point);
-		light.transform.position = new Vector3(0, 1.75f, 0);
-		light.intensity = lightIntensity;
-		light.color = lightColour;
-		light.range = RoomSize;
+		//var ambientLight = new GameObject("Ambient light");
+		//ambientLight.transform.SetParent(room.transform);
+		//var light = ambientLight.AddHDLight(HDLightTypeAndShape.Point);
+		//light.transform.position = new Vector3(0, 1.75f, 0);
+		//light.intensity = lightIntensity;
+		//light.color = lightColour;
+		//light.range = RoomSize;
+		//light.volumetricDimmer = 0f;
 
 		#endregion
 		#region Add Spawnpoints to room data
@@ -218,156 +220,84 @@ public class RoomTemplator : MonoBehaviour
 		walls.transform.SetParent(room.transform);
 		if(!leftDoor)
 		{
-			var lastLocation = -1.5f; //start wall -1.5m so when it adds 3 to the first the end lines up with 0
-			var addTo = new GameObject("LeftWalls");
-			addTo.transform.SetParent(walls.transform);
-			for (int i = 0; i < wallamount; i++) //Loop through all the walls needed
-			{
-				var currentwall = Instantiate(wall[Random.Range(0, wall.Length )], new Vector3(0, 0.25f, lastLocation+3),Quaternion.identity); //create a wall 3m further than the last
-				lastLocation = currentwall.transform.position.z;
-				currentwall.transform.SetParent(addTo.transform);
-			}
-			addTo.transform.rotation = Quaternion.Euler(0, 180, 0); //rotate the entire wall object to allow same algorithm to be used for all orientation
+			var addTo = CreateWall(180, wallamount, walls, "LeftWall");
 			addTo.transform.position = new Vector3(-((RoomSize/2)-0.125f), 0, ((wallamount / 2) * 3)); //calculates the exact position needed to place wall object holder
 
-		}
+		}//LeftWalls
 		else//Apply DoorWay
 		{
-			var lastLocation = -1.5f; //start wall -1.5m so when it adds 3 to the first the end lines up with 0
-			var addTo = new GameObject("LeftWalls");
-			addTo.transform.SetParent(walls.transform);
-			for (int i = 0; i < wallamount; i++) //Loop through all the walls needed
+			int tempRandomNumber = Mathf.FloorToInt(Random.Range(0, 100));
+			GameObject addTo;
+			if (tempRandomNumber > 30)
 			{
-				if(lastLocation != (((wallamount/2)*3)-3)) //you do the wallamount/2*3 to find the middle wall, you then -3 to get the wall before as the code +3
-				{
-					var currentwall = Instantiate(wall[Random.Range(0,wall.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity); 
-					lastLocation = currentwall.transform.position.z;
-					currentwall.transform.SetParent(addTo.transform);
-				}
-				else
-				{
-					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity,currentwall.transform);
-					lastLocation = currentwall.transform.position.z;
-					currentwall.transform.SetParent(addTo.transform);
-				}
+				addTo = CreateWallWithDoor(180, wallamount, walls, "LeftWall", false, 1, standardDoorWays);
+				//calculates the exact position needed to place wall object holder
 			}
-			addTo.transform.rotation = Quaternion.Euler(0, 180, 0); //rotate the entire wall object to allow same algorithm to be used for all orientation
-			addTo.transform.position = new Vector3(-((RoomSize / 2) - 0.125f), 0, ((wallamount / 2) * 3)); //calculates the exact position needed to place wall object holder
+			else
+			{
+				addTo = CreateWallWithDoor(180, wallamount, walls, "LeftWall", false, 2, crouchDoorWays);
+				
+			}
+			addTo.transform.position = new Vector3(-((RoomSize / 2) - 0.125f), 0, ((wallamount / 2) * 3));//calculates the exact position needed to place wall object holder
 		}
 		if (!rightDoor)
 		{
-			var lastLocation = -1.5f;
-			var addTo = new GameObject("RightWalls");
-			addTo.transform.SetParent(walls.transform);
-			for (int i = 0; i < wallamount; i++)
-			{
-				var currentwall = Instantiate(wall[Random.Range(0, wall.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-				lastLocation = currentwall.transform.position.z;
-				currentwall.transform.SetParent(addTo.transform);
-			}
-			addTo.transform.rotation = Quaternion.Euler(0, 0, 0);
+			var addTo = CreateWall(0, wallamount, walls, "RightWall");
 			addTo.transform.position = new Vector3(((RoomSize / 2) - 0.125f), 0, -((wallamount / 2) * 3));
-		}
+		}//RightWalls
 		else//Apply DoorWay
 		{
-			var lastLocation = -1.5f;
-			var addTo = new GameObject("RightWalls");
-			addTo.transform.SetParent(walls.transform);
-			for (int i = 0; i < wallamount; i++)
+			int tempRandomNumber = Mathf.FloorToInt(Random.Range(0, 100));
+			GameObject addTo;
+			if (tempRandomNumber > 30)
 			{
-				if (lastLocation != (((wallamount / 2) * 3) - 3))
-				{
-					var currentwall = Instantiate(wall[Random.Range(0, wall.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					lastLocation = currentwall.transform.position.z;
-					currentwall.transform.SetParent(addTo.transform);
-				}
-				else
-				{
-					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					//Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
-					lastLocation = currentwall.transform.position.z;
-					currentwall.transform.SetParent(addTo.transform);
-				}
+				addTo = CreateWallWithDoor(0, wallamount, walls, "RightWall", true, 1, standardDoorWays);
+				
 			}
-			addTo.transform.rotation = Quaternion.Euler(0, 0, 0);
+			else
+			{
+				addTo = CreateWallWithDoor(0, wallamount, walls, "RightWall", true, 2, crouchDoorWays);
+			}
 			addTo.transform.position = new Vector3(((RoomSize / 2) - 0.125f), 0, -((wallamount / 2) * 3));
 		}
 		if (!topDoor)
 		{
-			var lastLocation = -1.5f;
-			var addTo = new GameObject("TopWalls");
-			addTo.transform.SetParent(walls.transform);
-			for (int i = 0; i < wallamount; i++)
-			{
-				var currentwall = Instantiate(wall[Random.Range(0, wall.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-				lastLocation = currentwall.transform.position.z;
-				currentwall.transform.SetParent(addTo.transform);
-			}
-			addTo.transform.rotation = Quaternion.Euler(0, 270, 0);
+			var addTo = CreateWall(270, wallamount, walls, "TopWall");
 			addTo.transform.position = new Vector3(((wallamount / 2) * 3), 0, ((RoomSize / 2) - 0.125f));
-			
-		}
+
+		}//TopWalls
 		else//Apply DoorWay
 		{
-			var lastLocation = -1.5f;
-			var addTo = new GameObject("TopWalls");
-			addTo.transform.SetParent(walls.transform);
-			for (int i = 0; i < wallamount; i++)
+			int tempRandomNumber = Mathf.FloorToInt(Random.Range(0, 100));
+			GameObject addTo;
+			if (tempRandomNumber > 30)
 			{
-				if (lastLocation != (((wallamount / 2) * 3) - 3))
-				{
-					var currentwall = Instantiate(wall[Random.Range(0, wall.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					lastLocation = currentwall.transform.position.z;
-					currentwall.transform.SetParent(addTo.transform);
-				}
-				else
-				{
-					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
-					lastLocation = currentwall.transform.position.z;
-					currentwall.transform.SetParent(addTo.transform);
-				}
+				addTo = CreateWallWithDoor(270, wallamount, walls, "TopWall", true, 1, standardDoorWays);
+				
 			}
-			addTo.transform.rotation = Quaternion.Euler(0, 270, 0);
+			else
+			{
+				addTo = CreateWallWithDoor(270, wallamount, walls, "TopWall", true, 2, crouchDoorWays);
+			}
 			addTo.transform.position = new Vector3(((wallamount / 2) * 3), 0, ((RoomSize / 2) - 0.125f));
 		}
 		if (!bottomDoor)
 		{
-			var lastLocation = -1.5f;
-			var addTo = new GameObject("BottomWalls");
-			addTo.transform.SetParent(walls.transform);
-			for (int i = 0; i < wallamount; i++)
-			{
-				var currentwall = Instantiate(wall[Random.Range(0, wall.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-				lastLocation = currentwall.transform.position.z;
-				currentwall.transform.SetParent(addTo.transform);
-			}
-			addTo.transform.rotation = Quaternion.Euler(0, 90, 0);
+			var addTo = CreateWall(90, wallamount, walls, "BottomWall");
 			addTo.transform.position = new Vector3(-((wallamount/2)*3), 0, -((RoomSize / 2) - 0.125f));
-		}
+		}//BottomWalls
 		else//Apply DoorWay
 		{
-			var lastLocation = -1.5f;
-			var addTo = new GameObject("BottomWalls");
-			addTo.transform.SetParent(walls.transform);
-			for (int i = 0; i < wallamount; i++)
+			int tempRandomNumber = Mathf.FloorToInt(Random.Range(0, 100));
+			GameObject addTo;
+			if (tempRandomNumber > 30)
 			{
-				if (lastLocation != (((wallamount / 2) * 3)-3))
-				{
-					var currentwall = Instantiate(wall[Random.Range(0, wall.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					lastLocation = currentwall.transform.position.z;
-					currentwall.transform.SetParent(addTo.transform);
-				}
-				else
-				{
-					var currentwall = Instantiate(doorWays[Random.Range(0, doorWays.Length )], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
-					//Instantiate(doorSpawners[Random.Range(0, doorSpawners.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
-					lastLocation = currentwall.transform.position.z;
-					currentwall.transform.SetParent(addTo.transform);
-				}
+				addTo = CreateWallWithDoor(90, wallamount, walls, "BottomWall", false, 1, standardDoorWays);
 			}
-			addTo.transform.rotation = Quaternion.Euler(0, 90, 0);
+			else
+			{
+				addTo = CreateWallWithDoor(90, wallamount, walls, "BottomWall", false, 2, crouchDoorWays);
+			}
 			addTo.transform.position = new Vector3(-((wallamount / 2) * 3), 0, -((RoomSize / 2) - 0.125f));
 		}
 		#endregion
@@ -487,5 +417,50 @@ public class RoomTemplator : MonoBehaviour
 			room.name = i.ToString() + "TR";
 		}
 		ResetDoors();
+	}
+
+	private GameObject CreateWall(float WallRotation, float wallamount, GameObject walls, string wallName)
+	{
+		var lastLocation = -1.5f;//start wall -1.5m so when it adds 3 to the first the end lines up with 0
+		var addTo = new GameObject(wallName);
+		addTo.transform.SetParent(walls.transform);
+		for (int i = 0; i < wallamount; i++)//Loop through all the walls needed
+		{
+			var currentwall = Instantiate(wall[Random.Range(0, wall.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);//create a wall 3m further than the last
+			lastLocation = currentwall.transform.position.z;
+			currentwall.transform.SetParent(addTo.transform);
+		}
+		addTo.transform.rotation = Quaternion.Euler(0, WallRotation, 0);
+		return addTo;
+		
+	}
+
+	private GameObject CreateWallWithDoor(float WallRotation,float wallamount, GameObject walls, string wallName, bool spawndoor, int doorTypeIndex, GameObject[] doorWaysType)
+	{
+		var lastLocation = -1.5f; //start wall -1.5m so when it adds 3 to the first the end lines up with 0
+		var addTo = new GameObject(wallName);
+		addTo.transform.SetParent(walls.transform);
+		for (int i = 0; i < wallamount; i++) //Loop through all the walls needed
+		{
+			if (lastLocation != (((wallamount / 2) * 3) - 3)) //you do the wallamount/2*3 to find the middle wall, you then -3 to get the wall before as the code +3
+			{
+				var currentwall = Instantiate(wall[Random.Range(0, wall.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+				lastLocation = currentwall.transform.position.z;
+				currentwall.transform.SetParent(addTo.transform);
+			}
+			else
+			{
+
+				var currentwall = Instantiate(doorWaysType[Random.Range(0, doorWaysType.Length)], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity);
+				if (spawndoor)
+				{
+					Instantiate(doorSpawners[doorTypeIndex - 1], new Vector3(0, 0.25f, lastLocation + 3), Quaternion.identity, currentwall.transform);
+				}
+				lastLocation = currentwall.transform.position.z;
+				currentwall.transform.SetParent(addTo.transform);
+			}
+		}
+		addTo.transform.rotation = Quaternion.Euler(0, WallRotation, 0);
+		return addTo;
 	}
 }

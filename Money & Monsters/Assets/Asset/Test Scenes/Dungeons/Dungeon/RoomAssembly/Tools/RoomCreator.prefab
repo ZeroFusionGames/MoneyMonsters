@@ -71,10 +71,12 @@ MonoBehaviour:
   floor:
   - {fileID: 1035898995855194126, guid: b279878608d387f4bac8b77dbab4d135, type: 3}
   - {fileID: 1638421225803170951, guid: a9c67fbe74555b847ab2ac0d1d450a56, type: 3}
-  doorWays:
+  standardDoorWays:
   - {fileID: 2842062851625005427, guid: 63478f626dba61245bed379323088ae0, type: 3}
+  crouchDoorWays:
   - {fileID: 4105971168546082046, guid: 9174a056d7fce404eb0cc152b9545325, type: 3}
   doorSpawners:
+  - {fileID: 6682410692020574109, guid: a95c464ac045bb1428c90ae9907f09be, type: 3}
   - {fileID: 6682410692020574109, guid: c13b4ab992ea6da4aba731644b4a56c2, type: 3}
   roof:
   - {fileID: 4146469535077336810, guid: 53dc999e36d63b04c9db2ef36a157e87, type: 3}
