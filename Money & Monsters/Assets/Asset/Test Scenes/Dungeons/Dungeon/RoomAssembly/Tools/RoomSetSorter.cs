@@ -15,6 +15,11 @@ public class RoomSetSorter : MonoBehaviour
     public List<GameObject> bottomRooms;
     public List<GameObject> upRooms;
     public List<GameObject> downRooms;
+    [Header("Crouch Room Components")]
+    public List<GameObject> crouchLeftRooms;
+    public List<GameObject> crouchRightRooms;
+    public List<GameObject> crouchTopRooms;
+    public List<GameObject> crouchBottomRooms;
     [Header("Wall Component")]
     public List<GameObject> closedRooms;
 
@@ -30,7 +35,11 @@ public class RoomSetSorter : MonoBehaviour
             if (room.bottomDoor) { bottomRooms.Add(item); }
             if (room.upDoor) { upRooms.Add(item); }
             if (room.downDoor) { downRooms.Add(item); }
-            if(!room.leftDoor && !room.rightDoor && !room.topDoor && !room.bottomDoor && !room.upDoor && !room.downDoor) { closedRooms.Add(item); }
+            if (room.crouchBottomRooms) { crouchBottomRooms.Add(item); }
+            if (room.crouchLeftRooms) { crouchLeftRooms.Add(item); }
+            if (room.crouchRightRooms) { crouchRightRooms.Add(item); }
+            if (room.crouchTopRooms) { crouchTopRooms.Add(item); }
+            if (!room.leftDoor && !room.rightDoor && !room.topDoor && !room.bottomDoor && !room.upDoor && !room.downDoor && !room.crouchBottomRooms && !room.crouchLeftRooms && !room.crouchRightRooms && !room.crouchTopRooms) { closedRooms.Add(item); }
         }
     }
 
@@ -43,6 +52,10 @@ public class RoomSetSorter : MonoBehaviour
         roomSet.bottomRooms = new GameObject[0];
         roomSet.upRooms = new GameObject[0];
         roomSet.downRooms = new GameObject[0];
+        roomSet.crouchBottomRooms = new GameObject[0];
+        roomSet.crouchLeftRooms = new GameObject[0];
+        roomSet.crouchRightRooms = new GameObject[0];
+        roomSet.crouchTopRooms = new GameObject[0];
 
         roomSet.leftRooms = leftRooms.ToArray();
         roomSet.rightRooms = rightRooms.ToArray();
@@ -51,6 +64,10 @@ public class RoomSetSorter : MonoBehaviour
         roomSet.upRooms = upRooms.ToArray();
         roomSet.downRooms = downRooms.ToArray();
         roomSet.closedRooms = closedRooms.ToArray();
+        roomSet.crouchBottomRooms = crouchBottomRooms.ToArray();
+        roomSet.crouchLeftRooms = crouchLeftRooms.ToArray();
+        roomSet.crouchRightRooms = crouchRightRooms.ToArray();
+        roomSet.crouchTopRooms = crouchTopRooms.ToArray();
     }
 
     [ContextMenu("Sort and Apply")]
@@ -69,5 +86,9 @@ public class RoomSetSorter : MonoBehaviour
         bottomRooms.Clear();
         upRooms.Clear();
         downRooms.Clear();
+        crouchBottomRooms.Clear();
+        crouchLeftRooms.Clear();
+        crouchRightRooms.Clear();
+        crouchTopRooms.Clear();
     }
 }

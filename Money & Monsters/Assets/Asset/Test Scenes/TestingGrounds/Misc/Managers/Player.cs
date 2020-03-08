@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
 		selectionManager = GameObject.FindGameObjectWithTag(selectionManagerTag).GetComponent<SelectionManager>();
-		selectionManager.gameObject.GetComponent<HUDManager>().StartCoroutine("fadeOutPlayerHUD");
+		selectionManager.gameObject.GetComponent<HUDManager>().fadeOutPlayerHUD();
 	}
 
 	// Update is called once per frame

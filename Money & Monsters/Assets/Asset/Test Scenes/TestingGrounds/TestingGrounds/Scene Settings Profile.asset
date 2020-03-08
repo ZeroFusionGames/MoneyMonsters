@@ -91,6 +91,37 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
     min: 0
+--- !u!114 &-6803483338339013270
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0775cbb206825d541bf6c0297ee524ca, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  balance:
+    m_OverrideState: 0
+    m_Value: 0
+    min: -100
+    max: 100
 --- !u!114 &-6592665625625576595
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -109,7 +140,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0.2238267}
   gamma:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.82340497, y: 0.9505581, z: 1, w: 0.20938627}
   gain:
     m_OverrideState: 1
@@ -180,7 +211,7 @@ MonoBehaviour:
     m_Value: 1
   colorMode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   color:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -222,7 +253,7 @@ MonoBehaviour:
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   anisotropy:
     m_OverrideState: 1
     m_Value: 0.047
@@ -269,6 +300,7 @@ MonoBehaviour:
   - {fileID: 4813031848116969762}
   - {fileID: -7534087382700154360}
   - {fileID: -4916685954775001007}
+  - {fileID: -6803483338339013270}
 --- !u!114 &307101144877457980
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -373,7 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df29e7cc05fbec4aa43e06ea875565d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   rotation:
     m_OverrideState: 1
@@ -452,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d08ce26990eb1a4a9177b860541e702, type: 3}
   m_Name: Exposure
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1

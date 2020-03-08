@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomTemplates : MonoBehaviour
 {
+ 
+
+    public int minAmountOfRooms = 10;
     [Header("Room Set")]
     public RoomSets[] roomSet;
 
@@ -12,6 +16,11 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] rightRooms;
     public GameObject[] topRooms;
     public GameObject[] bottomRooms;
+    [Header("Crouch Room Components")]
+    public GameObject[] crouchLeftRooms;
+    public GameObject[] crouchRightRooms;
+    public GameObject[] crouchTopRooms;
+    public GameObject[] crouchBottomRooms;
     [Header("Elevation Room Components")]
     public GameObject[] upRooms;
     public GameObject[] downRooms;
@@ -32,11 +41,18 @@ public class RoomTemplates : MonoBehaviour
     private bool spawnedBoss;
     private int roomSetNumber = 0;
     public GameObject boss;
+    public bool loadTileSetOnStart;
 
 
     private void Awake()
     {
-        ResetAndPopulate();
+        if (loadTileSetOnStart)
+        {
+            roomSetNumber = Random.Range(0, roomSet.Length);
+            ResetAndPopulate();
+
+        }
+        
     }
 
     void Update()
@@ -49,6 +65,11 @@ public class RoomTemplates : MonoBehaviour
                 {
                     Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
                     spawnedBoss = true;
+                    if (rooms.Count <= minAmountOfRooms)
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    }
+                    
                 }
             }
         }
@@ -69,6 +90,11 @@ public class RoomTemplates : MonoBehaviour
         upRooms = roomSet[roomSetNumber].upRooms;
         downRooms = roomSet[roomSetNumber].downRooms;
         closedRooms = roomSet[roomSetNumber].closedRooms;
+        crouchBottomRooms = roomSet[roomSetNumber].crouchBottomRooms;
+        crouchLeftRooms = roomSet[roomSetNumber].crouchLeftRooms;
+        crouchRightRooms = roomSet[roomSetNumber].crouchRightRooms;
+        crouchTopRooms = roomSet[roomSetNumber].crouchTopRooms;
+
     }
 
     [ContextMenu("Reset Roomset")]
@@ -78,6 +104,10 @@ public class RoomTemplates : MonoBehaviour
         leftRooms = new GameObject[0];
         rightRooms = new GameObject[0];
         topRooms = new GameObject[0];
+        crouchBottomRooms = new GameObject[0];
+        crouchLeftRooms = new GameObject[0];
+        crouchRightRooms = new GameObject[0];
+        crouchTopRooms = new GameObject[0];
         upRooms = new GameObject[0];
         downRooms = new GameObject[0];
         closedRooms = new GameObject[0];
@@ -89,4 +119,6 @@ public class RoomTemplates : MonoBehaviour
         ResetTemplate();
         PopulateTemplate();
     }
+
+
 }

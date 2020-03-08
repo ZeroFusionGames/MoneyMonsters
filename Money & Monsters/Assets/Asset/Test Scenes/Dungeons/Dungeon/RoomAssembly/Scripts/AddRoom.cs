@@ -13,6 +13,11 @@ public class AddRoom : MonoBehaviour
     public bool bottomDoor;
     public bool upDoor;
     public bool downDoor;
+    [Header("Crouch Room Components")]
+    public bool crouchLeftRooms;
+    public bool crouchRightRooms;
+    public bool crouchTopRooms;
+    public bool crouchBottomRooms;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +33,10 @@ public class AddRoom : MonoBehaviour
             GameObject.FindGameObjectWithTag("Main Manager").GetComponent<WaypointManagement>().waypoints.Add(this.transform);
         }
         
+    }
+
+    private void OnDestroy()
+    {
+        templates.rooms.Remove(this.gameObject);
     }
 }

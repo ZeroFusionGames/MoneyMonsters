@@ -27,6 +27,7 @@ public class Teleporter : Interactable
 		else
 		{
 			SceneManager.LoadScene(Scenename);
+			DontDestroyOnLoad(player);
 		}
 		
 	}
@@ -38,6 +39,6 @@ public class Teleporter : Interactable
 
 	void fadeout()
 	{
-		hudManager.StartCoroutine("fadeInPlayerHUD");
+		hudManager.fadeInPlayerHUD();
 	}
 }

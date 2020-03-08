@@ -84,6 +84,7 @@ public class BasicAiFramework : MonoBehaviour
         {
             animator.SetTrigger("Chase");
             state = State.CHASE;
+            aiType.viewRadius = aiType.viewRadius + 5;
         }
         else if (Vector3.Distance(this.transform.position, waypointPos) > 2 /*&& agent.pathStatus != NavMeshPathStatus.PathPartial && agent.pathStatus != NavMeshPathStatus.PathInvalid*/)
         {
@@ -134,6 +135,7 @@ public class BasicAiFramework : MonoBehaviour
         {
             animator.SetTrigger("Patrol");
             state = State.PATROL;
+            aiType.viewRadius = aiType.viewRadius - 5;
         }
     }
 
@@ -171,7 +173,7 @@ public class BasicAiFramework : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Vector3 waypointPos = new Vector3(waypoints[waypointsInd].position.x + waypointOffset.x, waypoints[waypointsInd].position.y + waypointOffset.y, waypoints[waypointsInd].position.z + waypointOffset.z);
-        Debug.Log(this.GetComponentInParent<Transform>().gameObject.ToString() + agent.pathStatus.ToString());
+        //Debug.Log(this.GetComponentInParent<Transform>().gameObject.ToString() + agent.pathStatus.ToString());
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(waypointPos, 1);
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,10 @@ public class RoomSpawner : MonoBehaviour
         Right,
         Top,
         Bottom,
+        CrouchLeft,
+        CrouchRight,
+        CrouchTop,
+        CrouchBottom,
         Up,
         Down,
     }
@@ -74,6 +79,18 @@ public class RoomSpawner : MonoBehaviour
                 case openingDirection.Down:
                     DownDoor();
                     break;
+                case openingDirection.CrouchBottom:
+                    CrouchBottomDoor();
+                    break;
+                case openingDirection.CrouchLeft:
+                    CrouchLeftDoor();
+                    break;
+                case openingDirection.CrouchRight:
+                    CrouchRightDoor();
+                    break;
+                case openingDirection.CrouchTop:
+                    CrouchTopDoor();
+                    break;
             }
                 
 
@@ -107,57 +124,82 @@ public class RoomSpawner : MonoBehaviour
         }
         
     }
+	#region SpawnRooms
+	private void CrouchTopDoor()
+    {
+        rand = UnityEngine.Random.Range(0, templates.crouchBottomRooms.Length);
+        Instantiate(templates.crouchBottomRooms[rand], transform.position, templates.crouchBottomRooms[rand].transform.rotation);
+    }
+
+    private void CrouchRightDoor()
+    {
+        rand = UnityEngine.Random.Range(0, templates.crouchLeftRooms.Length);
+        Instantiate(templates.crouchLeftRooms[rand], transform.position, templates.crouchLeftRooms[rand].transform.rotation);
+    }
+
+    private void CrouchLeftDoor()
+    {
+        rand = UnityEngine.Random.Range(0, templates.crouchRightRooms.Length);
+        Instantiate(templates.crouchRightRooms[rand], transform.position, templates.crouchRightRooms[rand].transform.rotation);
+    }
+
+    private void CrouchBottomDoor()
+    {
+        
+        rand = UnityEngine.Random.Range(0, templates.crouchTopRooms.Length);
+        Instantiate(templates.crouchTopRooms[rand], transform.position, templates.crouchTopRooms[rand].transform.rotation);
+    }
 
     private void DownDoor()
     {
         //Needs room with Up door
-        rand = Random.Range(0, templates.upRooms.Length);
+        rand = UnityEngine.Random.Range(0, templates.upRooms.Length);
         Instantiate(templates.upRooms[rand], transform.position, templates.upRooms[rand].transform.rotation);
     }
 
     private void UpDoor()
     {
         //Needs room with Down door
-        rand = Random.Range(0, templates.downRooms.Length);
+        rand = UnityEngine.Random.Range(0, templates.downRooms.Length);
         Instantiate(templates.downRooms[rand], transform.position, templates.downRooms[rand].transform.rotation);
     }
 
     private void TopDoor()
     {
         //Needs room with Bottom door
-        rand = Random.Range(0, templates.bottomRooms.Length);
+        rand = UnityEngine.Random.Range(0, templates.bottomRooms.Length);
         Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
     }
 
     private void BottomDoor()
     {
         //Needs room with Top door
-        rand = Random.Range(0, templates.topRooms.Length);
+        rand = UnityEngine.Random.Range(0, templates.topRooms.Length);
         Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
     }
 
     private void LeftDoor()
     {
         //Needs room with right door
-        rand = Random.Range(0, templates.rightRooms.Length);
+        rand = UnityEngine.Random.Range(0, templates.rightRooms.Length);
         Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
     }
 
     private void RightDoor()
     {
         //Needs room with left door
-        rand = Random.Range(0, templates.leftRooms.Length);
+        rand = UnityEngine.Random.Range(0, templates.leftRooms.Length);
         Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
     }
-
-    void OnTriggerEnter(Collider other)
+	#endregion
+	void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("spawnPoint"))
         {
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 //spawn wall to block holes]
-                rand = Random.Range(0, templates.closedRooms.Length);
+                rand = UnityEngine.Random.Range(0, templates.closedRooms.Length);
                 Instantiate(templates.closedRooms[rand], transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }

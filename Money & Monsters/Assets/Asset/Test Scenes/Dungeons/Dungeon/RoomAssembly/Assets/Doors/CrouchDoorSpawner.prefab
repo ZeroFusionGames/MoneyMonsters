@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTimer: 0
   rarity: 100
-  objectSet: {fileID: 11400000, guid: cdc86f17d79f5d242aade3806e0099db, type: 2}
+  objectSet: {fileID: 11400000, guid: 83b6311a0c80f084f87da3ae83929dbd, type: 2}
   useRandomRotation: 0

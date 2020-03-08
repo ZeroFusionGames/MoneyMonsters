@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: CrouchDoorSet
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 7374185648515352797, guid: bb4cc2a838c96b04bae0816cd6bd7409, type: 3}
-  - {fileID: 7697105436101702314, guid: e642479f036d7264081712656b3a2c36, type: 3}
+  - {fileID: 2690543373222309128, guid: 624b77e36638faa4eb7a670ed326b8d8, type: 3}

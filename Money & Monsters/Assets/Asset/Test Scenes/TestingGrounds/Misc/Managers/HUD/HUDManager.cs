@@ -1,22 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class HUDManager : MonoBehaviour
 {
-    public Animator fadeScreen;
+    public Graphic fadeScreen;
     public float fadeTime;
 
 
     [ContextMenu("Fade In")]
-    void fadeInPlayerHUD()
+    public void fadeInPlayerHUD()
     {
-        fadeScreen.Play("fadeScreen");
+        fadeScreen.DOFade(1,2);
     }
 
     [ContextMenu("Fade Out")]
-    void fadeOutPlayerHUD()
+    public void fadeOutPlayerHUD()
     {
-        fadeScreen.Play("InvfadeScreen");
+        fadeScreen.DOFade(0,2).OnComplete(DisableFade);
+    }
+
+    private void DisableFade()
+    {
+        fadeScreen.enabled = false;
     }
 }

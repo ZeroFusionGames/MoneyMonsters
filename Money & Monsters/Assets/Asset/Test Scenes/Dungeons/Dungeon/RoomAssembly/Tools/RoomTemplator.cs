@@ -19,7 +19,7 @@ public class RoomTemplator : MonoBehaviour
 	public GameObject spawnPoint;
 	public GameObject destoryer;
 	private GameObject room;
-
+	#region DoorConfig
 	[Header("Door Config")]
 	public bool leftDoor = false;
 	public bool rightDoor = false;
@@ -27,7 +27,17 @@ public class RoomTemplator : MonoBehaviour
 	public bool bottomDoor = false;
 	public bool upDoor = false;
 	public bool downDoor = false;
+	#endregion
+	#region SpawnPoints
+	private GameObject leftSpawnPoint;
+	private GameObject rightSpawnPoint;
+	private GameObject topSpawnPoint;
+	private GameObject bottomSpawnPoint;
+	private GameObject upSpawnPoint;
+	private GameObject downpawnPoint;
 
+	#endregion
+	#region RoomParts
 	[Header("Room Parts")]
 	public GameObject[] wall;
 	public GameObject[] floor;
@@ -35,7 +45,7 @@ public class RoomTemplator : MonoBehaviour
 	public GameObject[] crouchDoorWays;
 	public GameObject[] doorSpawners;
 	public GameObject[] roof;
-
+	#endregion
 	[Header("Light Settings")]
 	public float lightIntensity = 30;
 	public Color lightColour;
@@ -169,45 +179,45 @@ public class RoomTemplator : MonoBehaviour
 
 		if (leftDoor)
 		{
-			var currentSpawn = Instantiate(spawnPoint, new Vector3(-RoomSize, 0, 0), Quaternion.identity);
-			currentSpawn.transform.SetParent(spawnPoints.transform);
-			currentSpawn.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Left;
-			currentSpawn.name = "LeftSpawn";
+			leftSpawnPoint = Instantiate(spawnPoint, new Vector3(-RoomSize, 0, 0), Quaternion.identity);
+			leftSpawnPoint.transform.SetParent(spawnPoints.transform);
+			leftSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Left;
+			leftSpawnPoint.name = "LeftSpawn";
 		}
 		if (rightDoor)
 		{
-			var currentSpawn = Instantiate(spawnPoint, new Vector3(RoomSize, 0, 0), Quaternion.identity);
-			currentSpawn.transform.SetParent(spawnPoints.transform);
-			currentSpawn.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Right;
-			currentSpawn.name = "RightSpawn";
+			rightSpawnPoint = Instantiate(spawnPoint, new Vector3(RoomSize, 0, 0), Quaternion.identity);
+			rightSpawnPoint.transform.SetParent(spawnPoints.transform);
+			rightSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Right;
+			rightSpawnPoint.name = "RightSpawn";
 		}
 		if (topDoor)
 		{
-			var currentSpawn = Instantiate(spawnPoint, new Vector3(0, 0, RoomSize), Quaternion.identity);
-			currentSpawn.transform.SetParent(spawnPoints.transform);
-			currentSpawn.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Top;
-			currentSpawn.name = "TopSpawn";
+			topSpawnPoint = Instantiate(spawnPoint, new Vector3(0, 0, RoomSize), Quaternion.identity);
+			topSpawnPoint.transform.SetParent(spawnPoints.transform);
+			topSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Top;
+			topSpawnPoint.name = "TopSpawn";
 		}
 		if (bottomDoor)
 		{
-			var currentSpawn = Instantiate(spawnPoint, new Vector3(0, 0, -RoomSize), Quaternion.identity);
-			currentSpawn.transform.SetParent(spawnPoints.transform);
-			currentSpawn.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Bottom;
-			currentSpawn.name = "BottomSpawn";
+			bottomSpawnPoint = Instantiate(spawnPoint, new Vector3(0, 0, -RoomSize), Quaternion.identity);
+			bottomSpawnPoint.transform.SetParent(spawnPoints.transform);
+			bottomSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Bottom;
+			bottomSpawnPoint.name = "BottomSpawn";
 		}
 		if (upDoor)
 		{
-			var currentSpawn = Instantiate(spawnPoint, new Vector3(0, RoomHeight, 0), Quaternion.identity);
-			currentSpawn.transform.SetParent(spawnPoints.transform);
-			currentSpawn.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Up;
-			currentSpawn.name = "UpSpawn";
+			upSpawnPoint = Instantiate(spawnPoint, new Vector3(0, RoomHeight, 0), Quaternion.identity);
+			upSpawnPoint.transform.SetParent(spawnPoints.transform);
+			upSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Up;
+			upSpawnPoint.name = "UpSpawn";
 		}
 		if (downDoor)
 		{
-			var currentSpawn = Instantiate(spawnPoint, new Vector3(0, -RoomHeight, 0), Quaternion.identity);
-			currentSpawn.transform.SetParent(spawnPoints.transform);
-			currentSpawn.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Down;
-			currentSpawn.name = "DownSpawn";
+			downpawnPoint = Instantiate(spawnPoint, new Vector3(0, -RoomHeight, 0), Quaternion.identity);
+			downpawnPoint.transform.SetParent(spawnPoints.transform);
+			downpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.Down;
+			downpawnPoint.name = "DownSpawn";
 		}
 
 		var currentDestroyer = Instantiate(destoryer, Vector3.zero, Quaternion.identity);
@@ -236,7 +246,10 @@ public class RoomTemplator : MonoBehaviour
 			else
 			{
 				addTo = CreateWallWithDoor(180, wallamount, walls, "LeftWall", false, 2, crouchDoorWays);
-				
+				leftSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.CrouchLeft;
+				addRoomScript.leftDoor = false;
+				addRoomScript.crouchLeftRooms = true;
+
 			}
 			addTo.transform.position = new Vector3(-((RoomSize / 2) - 0.125f), 0, ((wallamount / 2) * 3));//calculates the exact position needed to place wall object holder
 		}
@@ -257,6 +270,9 @@ public class RoomTemplator : MonoBehaviour
 			else
 			{
 				addTo = CreateWallWithDoor(0, wallamount, walls, "RightWall", true, 2, crouchDoorWays);
+				rightSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.CrouchRight;
+				addRoomScript.rightDoor = false;
+				addRoomScript.crouchRightRooms = true;
 			}
 			addTo.transform.position = new Vector3(((RoomSize / 2) - 0.125f), 0, -((wallamount / 2) * 3));
 		}
@@ -278,6 +294,9 @@ public class RoomTemplator : MonoBehaviour
 			else
 			{
 				addTo = CreateWallWithDoor(270, wallamount, walls, "TopWall", true, 2, crouchDoorWays);
+				topSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.CrouchTop;
+				addRoomScript.topDoor = false;
+				addRoomScript.crouchTopRooms = true;
 			}
 			addTo.transform.position = new Vector3(((wallamount / 2) * 3), 0, ((RoomSize / 2) - 0.125f));
 		}
@@ -297,6 +316,9 @@ public class RoomTemplator : MonoBehaviour
 			else
 			{
 				addTo = CreateWallWithDoor(90, wallamount, walls, "BottomWall", false, 2, crouchDoorWays);
+				bottomSpawnPoint.GetComponent<RoomSpawner>().opening = RoomSpawner.openingDirection.CrouchBottom;
+				addRoomScript.bottomDoor = false;
+				addRoomScript.crouchBottomRooms = true;
 			}
 			addTo.transform.position = new Vector3(-((wallamount / 2) * 3), 0, -((RoomSize / 2) - 0.125f));
 		}
